@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import dao.UserDAOImpl;
@@ -16,6 +17,7 @@ import dao.UserDAOImpl;
  */
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private UserDAOImpl userDAO = new UserDAOImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,16 +35,23 @@ public class LoginController extends HttpServlet {
 		String un = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		PrintWriter out = response.getWriter();
+		//out.println("You are logged into the application..!!");
 		
-		if (UserDAO.login(un,pwd))
+		
+		if (userDAO.login(un, pwd))
 		{
+			HttpSession session = request.getSession();
+			session.setAttribute("user", un);
+			
+			
 			out.println("You are logged into the application..!!"); 
 			
 		}
 		else
 		{
-			out.println("Wrong username or password");
+			out.println("Wrong username or passwordd");
 		}
+		
 		
 		
 		

@@ -10,7 +10,7 @@ public class DBConnect {
 		Connection cons =null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			cons = DriverManager.getConnection("jdbc:mysql://localhost:3306/newbank","root","happy123$");
+			cons = DriverManager.getConnection("jdbc:mysql://localhost:3306/abcbankdb","root","happy123$");
 		} 
 		catch(Exception e)
 		{

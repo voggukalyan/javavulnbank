@@ -1,43 +1,42 @@
 package dao;
-import java.sql.*;
+
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import model.User;
 
-public class UserDAOImpl {
-	
+public class UserDAOImpl implements UserDAO {
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		UserDAOImpl dao = new UserDAOImpl();
-			
+		// dao.addUser(new User(0, "admin", "12345", "admin", "1"));
+//		System.out.println(dao.checkUser("admin"));
+		//System.out.println(dao.login("admin", "12345"));
 	}
-	
-	public static boolean login(String username,String password)
-	{
+
+	@Override
+	public boolean login(String username, String password) {
 		Connection con = DBConnect.getConnection();
-		String sql ="select * from banktb where username='"+username+"' and password='"+password+ "'";
+		String sql = "select * from abcbanktb where username='" + username
+				+ "' and password='" + password + "'";
 		PreparedStatement ps;
-		
 		try {
-			
-			ps= (PreparedStatement) con.prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
-			if(rs.next())
-			{
+			ps = (PreparedStatement) con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
 				con.close();
 				return true;
 			}
-			
-		}catch(SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
-		
 	}
+
+	
+
+
 }
