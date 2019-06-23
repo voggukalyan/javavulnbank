@@ -43,13 +43,13 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", un);
 			
-			
-			out.println("You are logged into the application..!!"); 
+			response.sendRedirect("Home.jsp");
+			//out.println("You are logged into the application..!!"); 
 			
 		}
 		else
 		{
-			out.println("Wrong username or passwordd");
+			out.println("<html> You are not "+un+"</html");
 		}
 		
 		

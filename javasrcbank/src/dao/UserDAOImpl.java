@@ -25,6 +25,7 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement ps;
 		try {
 			ps = (PreparedStatement) con.prepareStatement(sql);
+			
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				con.close();
@@ -35,6 +36,9 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return false;
 	}
+	
+
+	
 
 	
 
