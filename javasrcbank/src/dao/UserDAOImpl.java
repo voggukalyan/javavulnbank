@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.PreparedStatement;
 
 
 public class UserDAOImpl implements UserDAO {
@@ -35,6 +34,27 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	@Override
+	public String data(String username) {
+		Connection con = DBConnect.getConnection();
+		String sql = "select * from abcbanktb where username='" + username+ "'";
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) con.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				String email = rs.getString("email");
+				
+				con.close();
+				return email;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "failed";
 	}
 	
 
