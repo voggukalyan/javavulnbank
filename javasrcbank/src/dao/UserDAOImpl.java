@@ -37,7 +37,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public String data(String username) {
+	public ResultSet data(String username) {
 		Connection con = DBConnect.getConnection();
 		String sql = "select * from abcbanktb where username='" + username+ "'";
 		PreparedStatement ps;
@@ -46,15 +46,16 @@ public class UserDAOImpl implements UserDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				String email = rs.getString("email");
+				//String email = rs.getString("email");
 				
-				con.close();
-				return email;
+				//con.close();
+				return rs;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return "failed";
+		return null;
+		
 	}
 	
 
