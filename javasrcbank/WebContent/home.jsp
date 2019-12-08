@@ -29,7 +29,7 @@
       
       %>
       
-      Hello <% out.println(un); %>
+      Hello <% out.println(ESAPI.encoder().encodeForHTML(un)); %>
       <br><br>
       You account number: <% out.println(ESAPI.encoder().encodeForHTML(acno)); %> <br>
       Your email id is: <% out.println(ESAPI.encoder().encodeForHTML(email)); %> <br>
