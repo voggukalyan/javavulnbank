@@ -10,7 +10,7 @@
     
    	 String  un = (String)session.getAttribute("user");
       
-      out.println(un);
+      
       
       if(un=="admin")
       {
