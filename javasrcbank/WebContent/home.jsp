@@ -32,10 +32,10 @@
       Hello <% out.println(un); %>
       <br><br>
       You account number: <% out.println(ESAPI.encoder().encodeForHTML(acno)); %> <br>
-      Your email id is: <% out.println(email); %> <br>
-      Your balance is: <% out.println(balance); %> <br>
-      Your mobile number is: <% out.println(mobile); %> <br>
-      Your feedback is: <% out.println(fb); %> <br>
+      Your email id is: <% out.println(ESAPI.encoder().encodeForHTML(email)); %> <br>
+      Your balance is: <% out.println(ESAPI.encoder().encodeForHTML(balance)); %> <br>
+      Your mobile number is: <% out.println(ESAPI.encoder().encodeForHTML(mobile)); %> <br>
+      Your feedback is: <% out.println(ESAPI.encoder().encodeForHTML(fb)); %> <br>
 
   <br> <a href="feedback.jsp">Feedback</a>
    </body>
