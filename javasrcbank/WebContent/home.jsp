@@ -4,6 +4,7 @@
 <%@ page import = "java.io.*,java.util.*" %>
 <%@ page import="dao.UserDAOImpl"%>
 <%@ page import = "java.sql.*" %>
+<%@ page import = "org.owasp.esapi.*" %>
 
 
 <html>
@@ -26,12 +27,11 @@
       String mobile = data.getString("mobile");
       String fb=data.getString("feedback");
       
-         
       %>
       
       Hello <% out.println(un); %>
       <br><br>
-      You account number: <% out.println(acno); %> <br>
+      You account number: <% out.println(ESAPI.encoder().encodeForHTML(acno)); %> <br>
       Your email id is: <% out.println(email); %> <br>
       Your balance is: <% out.println(balance); %> <br>
       Your mobile number is: <% out.println(mobile); %> <br>
