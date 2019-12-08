@@ -28,12 +28,14 @@ public class DownloadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String url = request.getParameter("url");
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		response.setContentType("text/html");  
 		PrintWriter out = response.getWriter();  
-		String filename = "test.html";   
-		String filepath = "/Users/krishnapadala/git/javavulnbank/javasrcbank/";   
+		String filename = url;   
+		String filepath = "c:\\";   
 		response.setContentType("APPLICATION/OCTET-STREAM");   
 		response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");   
 		  
@@ -55,21 +57,6 @@ public class DownloadServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		response.setContentType("text/html");  
-		PrintWriter out = response.getWriter();  
-		String filename = "test.html";   
-		String filepath = "/Users/krishnapadala/git/javavulnbank/javasrcbank/";    
-		response.setContentType("APPLICATION/OCTET-STREAM");   
-		response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");   
-		  
-		FileInputStream fileInputStream = new FileInputStream(filepath + filename);  
-		            
-		int i;   
-		while ((i=fileInputStream.read()) != -1) {  
-		out.write(i);   
-		}   
-		fileInputStream.close();   
-		out.close();   
-		}  
+	}
 	}
 
