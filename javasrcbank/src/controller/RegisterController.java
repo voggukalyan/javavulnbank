@@ -55,7 +55,7 @@ public class RegisterController extends HttpServlet {
 		System.out.println(user);
 		}
 		catch (JAXBException e) 
-		{
+		{ 
 		    e.printStackTrace();
 		}
 		
