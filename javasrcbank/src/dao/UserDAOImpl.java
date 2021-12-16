@@ -4,7 +4,15 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
+
+import controller.LoginController;
+
 import java.sql.PreparedStatement;
+
+import org.apache.log4j.Logger;
+import dao.ContextListener;
 
 
 public class UserDAOImpl implements UserDAO {
@@ -16,6 +24,7 @@ public class UserDAOImpl implements UserDAO {
 		//System.out.println(dao.login("admin", "12345"));
 	}
 
+	static final Logger LOGGER = Logger.getLogger(LoginController.class);
 	@Override
 	public boolean login(String username, String password) {
 		Connection con = DBConnect.getConnection();
@@ -31,7 +40,9 @@ public class UserDAOImpl implements UserDAO {
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.info("Hello World");
+			return false;
+			//e.printStackTrace();
 		}
 		return false;
 	}

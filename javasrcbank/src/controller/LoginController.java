@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+import dao.ContextListener;
 import dao.UserDAO;
 import dao.UserDAOImpl;
 
@@ -30,13 +32,18 @@ public class LoginController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    static final Logger LOGGER = Logger.getLogger(LoginController.class);
+       
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String un = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		PrintWriter out = response.getWriter();
+	
+		LOGGER.info("login attempted with:"+un);
 		//out.println("You are logged into the application..!!");
-		
+		 
 		
 		if (userDAO.login(un, pwd))
 		{
@@ -50,6 +57,7 @@ public class LoginController extends HttpServlet {
 		else
 		{
 			out.println("<html> You are not "+un+"</html");
+			
 		}
 		
 		
