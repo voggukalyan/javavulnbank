@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
 				return true;
 			}
 		} catch (SQLException e) {
-			LOGGER.info("Hello World");
+			LOGGER.info("query sent"+sql);
 			return false;
 			//e.printStackTrace();
 		}
